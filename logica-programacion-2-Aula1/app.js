@@ -79,4 +79,5 @@ function reiniciarJuego() {
   numeroSecreto = GenerarNumeroSecreto();
   //Desabilitar boton de reinicio
   document.querySelector("#reiniciar").setAttribute("disabled", "true");
+  //comentario
 }
