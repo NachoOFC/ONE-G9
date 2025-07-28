@@ -1,8 +1,9 @@
 let listaNumerosSorteados = [];
-let numeroSecreto = GenerarNumeroSecreto();
+let numeroSecreto;
 let intentos = 1;
 const numeroMaximo = 10;
 
+numeroSecreto = GenerarNumeroSecreto();
 mensajesIniciales();
 
 function asignarTextoElemento(elemento, texto) {
@@ -11,26 +12,22 @@ function asignarTextoElemento(elemento, texto) {
 }
 
 function GenerarNumeroSecreto() {
-  let numeroGenerado = Math.floor(Math.random() * 10) + 1;
+  let numeroGenerado = Math.floor(Math.random() * numeroMaximo) + 1;
 
   console.log(numeroGenerado);
   console.log(listaNumerosSorteados);
   //si ya sortemaos todos los numeros
   if (listaNumerosSorteados.length === numeroMaximo) {
     asignarTextoElemento("p", "Se sortearon todos los numeros");
-    
-  }else{
+  } else {
     //si el numero geerado esta en la lista de numeros sorteados
     if (listaNumerosSorteados.includes(numeroGenerado)) {
-        return GenerarNumeroSecreto();
+      return GenerarNumeroSecreto();
     } else {
       listaNumerosSorteados.push(numeroGenerado);
-        return numeroGenerado;
-   }
-   
+      return numeroGenerado;
+    }
   }
-    
-  
 }
 
 function verificarIntento() {
@@ -82,5 +79,4 @@ function reiniciarJuego() {
   numeroSecreto = GenerarNumeroSecreto();
   //Desabilitar boton de reinicio
   document.querySelector("#reiniciar").setAttribute("disabled", "true");
-  
 }
