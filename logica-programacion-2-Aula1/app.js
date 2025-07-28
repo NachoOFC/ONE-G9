@@ -1,5 +1,6 @@
 let numeroSecreto = GenerarNumeroSecreto();
 let intentos = 1;
+listaNumerosSorteados = [];
 mensajesIniciales();
 
 function asignarTextoElemento(elemento, texto) {
@@ -8,7 +9,13 @@ function asignarTextoElemento(elemento, texto) {
 }
 
 function GenerarNumeroSecreto() {
-  return Math.floor(Math.random() * 10) + 1;
+  let numeroGenerado = Math.floor(Math.random() * 10) + 1;
+  //si el numero geerado esta en la lista de numeros sorteados
+  if (listaNumerosSorteados.includes(numeroGenerado)) {
+    return GenerarNumeroSecreto();
+  } else {
+    return numeroGenerado;
+  }
 }
 
 function verificarIntento() {
