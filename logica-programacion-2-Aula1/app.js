@@ -2,6 +2,7 @@ let listaNumerosSorteados = [];
 let numeroSecreto;
 let intentos = 1;
 const numeroMaximo = 10;
+const maximosIntentos = 3;
 
 numeroSecreto = GenerarNumeroSecreto();
 mensajesIniciales();
@@ -25,7 +26,7 @@ function GenerarNumeroSecreto() {
       return GenerarNumeroSecreto();
     } else {
       listaNumerosSorteados.push(numeroGenerado);
-      return numeroGenerado;
+      return numeroGenerado; 
     }
   }
 }
@@ -45,10 +46,19 @@ function verificarIntento() {
     );
     document.getElementById("reiniciar").removeAttribute("disabled");
   } else {
-    if (numeroUsuario > numeroSecreto) {
-      asignarTextoElemento("p", "El numero secreto es menor");
+    if (intentos >= maximosIntentos) {
+      asignarTextoElemento(
+        "p",
+        "¡Se acabaron los intentos! El número secreto era " + numeroSecreto
+      );
+      document.querySelector("#intento").setAttribute("disabled", "true");
+      document.getElementById("reiniciar").removeAttribute("disabled");
     } else {
-      asignarTextoElemento("p", "El numero secreto es mayor");
+      if (numeroUsuario > numeroSecreto) {
+        asignarTextoElemento("p", "El número secreto es menor");
+      } else {
+        asignarTextoElemento("p", "El número secreto es mayor");
+      }
     }
     intentos++;
     limparCaja();
