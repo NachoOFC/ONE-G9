@@ -49,7 +49,9 @@ function verificarIntento() {
     if (intentos >= maximosIntentos) {
       asignarTextoElemento(
         "p",
-        "¡Se acabaron los intentos! El número secreto era " + numeroSecreto
+        "¡Se acabaron los intentos! El número secreto era " +
+          numeroSecreto +
+          "suerte la proxima vez."
       );
       document.querySelector("#intento").setAttribute("disabled", "true");
       document.getElementById("reiniciar").removeAttribute("disabled");
